@@ -22,6 +22,7 @@
 	}
 </script>
 </head>
+<!-- 添加注释，用于提交。 -->
 <body>
 	<c:if var="result" test="${empty sessionScope.nickname}">
 		<div class="all">
