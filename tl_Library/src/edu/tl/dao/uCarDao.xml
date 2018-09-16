@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	mapper是局部配置文件中的根标签，类似于html中的html标签
+	namespace：代表的是唯一的标识符，其值与某一个dao层类的路径保持一致。
+ -->
+<mapper namespace="edu.tl.dao.uCarDao">
+	<select id="queryCar" resultType="edu.tl.pojo.uCar" parameterType="edu.tl.pojo.uCar">
+		select * from u_car u where u.account=#{account} and u.bname=#{bname} and u.author=#{author} and u.paper=#{paper}
+	</select>
+	<select id="showAll" resultType="edu.tl.pojo.uCar" parameterType="String">
+		select * from u_car u where u.account=#{account}
+	</select>
+	<update id="alterCar" parameterType="edu.tl.pojo.uCar">
+		update u_car u set u.bcount=#{bcount} where u.account=#{account} and u.bname=#{bname} and u.author=#{author} and u.paper=#{paper}
+	</update>
+	<insert id="addCar" parameterType="edu.tl.pojo.uCar">
+		insert into u_car values(#{bname},#{author},#{paper},#{price},#{bcount},#{account})
+	</insert>
+	<delete id="deleteCar" parameterType="edu.tl.pojo.uCar">
+		delete u_car u where u.bname=#{bname} and u.author=#{author} and u.paper=#{paper} and u.account=#{account}
+	</delete>
+</mapper>
