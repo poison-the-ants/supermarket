@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	mapper是局部配置文件中的根标签，类似于html中的html标签
+	namespace：代表的是唯一的标识符，其值与某一个dao层类的路径保持一致。
+ -->
+<mapper namespace="edu.tl.dao.userDao">
+	<select id="selectByAccount" resultType="edu.tl.pojo.User" parameterType="String">
+		select * from t_userinfo t where t.account=#{account} 
+	</select>
+	<insert id="addUser" parameterType="edu.tl.pojo.User">
+		insert into t_userinfo values(#{account},#{password},#{sex},#{nickname},#{type},#{onlines})
+	</insert>
+	<select id="queryUserInfo" resultType="edu.tl.pojo.User" parameterType="Map">
+		select * from t_userinfo t where t.account=#{account} and t.password=#{password}
+	</select>
+	<update id="updateUserInfo" parameterType="Map">
+		update t_userinfo t set t.onlines=#{onlines} where t.account=#{account}
+	</update>
+</mapper>
